@@ -1,0 +1,71 @@
+# ============================
+# Python
+# ============================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+
+# Environment variables
+*.env
+.env.*
+!example.env
+
+# ============================
+# Django
+# ============================
+# Django Secret Key / configs
+*.local_settings.py
+db.sqlite3
+media/
+staticfiles/
+static/
+
+# Django migrations (optional, but recommended during early dev)
+# Remove the comment if you want to ignore migrations initially
+# **/migrations/
+# !**/migrations/__init__.py
+
+# ============================
+# VS Code
+# ============================
+.vscode/
+
+# ============================
+# OS / Editor files
+# ============================
+.DS_Store
+Thumbs.db
+
+# ============================
+# Logs
+# ============================
+*.log
+
+# ============================
+# Cache
+# ============================
+.cache/
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# ============================
+# PyTest / Coverage
+# ============================
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ============================
+# Docker
+# ============================
+docker-data/
