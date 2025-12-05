@@ -1,24 +1,29 @@
 from django.db import models
+from django.conf import settings
 
-from apps.core_users.models import User
+User = settings.AUTH_USER_MODEL
 
 
-# Create your models here.
 class Notification(models.Model):
-    NOTIF_TYPE = [
-        ("like", "Like"),
+
+    NOTIF_TYPES = [
+        ("reaction", "Reaction"),
         ("comment", "Comment"),
         ("friend_request", "Friend Request"),
         ("message", "Message"),
-        ("tag", "Tag"),
+        ("story_view", "Story View"),
     ]
+
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="notifications"
     )
     actor = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="triggered_notifications"
+        User, on_delete=models.CASCADE, related_name="actor_notifications"
     )
-    notif_type = models.CharField(max_length=20, choices=NOTIF_TYPE)
-    entity_id = models.BigIntegerField()  # post_id, comment_id, etc.
+    notif_type = models.CharField(max_length=20, choices=NOTIF_TYPES)
+    entity_id = models.PositiveIntegerField(null=True, blank=True)
     read_status = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
