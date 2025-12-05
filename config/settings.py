@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     "apps.stories",
     "apps.notifications",
     "apps.audit",
-    
+
 ]
 
 MIDDLEWARE = [
@@ -79,7 +79,7 @@ REST_FRAMEWORK.update(
     {
         "DEFAULT_AUTHENTICATION_CLASSES": [
             "rest_framework_simplejwt.authentication.JWTAuthentication",
-            "rest_framework.authentication.SessionAuthentication",  # optional
+            # "rest_framework.authentication.SessionAuthentication",  # optional
         ],
         "DEFAULT_PERMISSION_CLASSES": [
             "rest_framework.permissions.IsAuthenticated",
@@ -93,6 +93,7 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": True,
+    "AUTH_HEADER_TYPES": ("Bearer",),
 }
 
 ROOT_URLCONF = "config.urls"
